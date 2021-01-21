@@ -3,6 +3,7 @@ import csv
 
 #set path
 electionpath = os.path.join('Resources','election_data.csv')
+textpath= os.path.join("Resources", "Analysis")
 
 total_votes=0
 candidates=0
@@ -14,21 +15,35 @@ with open(electionpath, newline='') as csvfile:
 
         for row in csvreader:
             total_votes += 1
-            candidate=row["Candidate"]
+            
 
-print("candidate")
+# print("candidate")
 
-print("Election Results")
-print("------------------------------")
-print(f"Total Votes: {total_votes}")
-print("------------------------------") 
+# print("Election Results")
+# print("------------------------------")
+# print(f"Total Votes: {total_votes}")
+# print("------------------------------") 
+# print("------------------------------") 
+# print("------------------------------") 
+
+output=(
+"Election Results\n"
+"---------------------------\n"
+f"Total Votes: {total_votes}\n"
+"---------------------------\n"
 
 
 
 
-print("------------------------------") 
+"---------------------------\n"
+f"Winner:\n"
+"---------------------------\n"
+)
+print(output)
 
-print("------------------------------") 
+#Write to the text path
+with open(textpath, "w") as txt_file:
+    txt_file.write(output)
 
 
 
