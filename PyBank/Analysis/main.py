@@ -3,9 +3,7 @@ import csv
 
 #set path
 budgetpath = os.path.join('Resources','budget_data.csv')
-
-#set parameter
-
+textpath= os.path.join("Resources", "Analysis")
 
 #initiate values
 total  =0
@@ -42,11 +40,17 @@ with open(budgetpath, newline='') as csvfile:
 
 #Print to terminal
 
+output=(
+"Financial Analysis")
+"---------------------------"
+f"Total Months: {total_rows}\n"
+f"Total:${total}\n"
+f"Average Change: ${average}\n"
+f"Greatest Increase in Profits: {Positive_Month} ${greatest_increase}\n"
+f"Greatest Decrease in Profits: {Negative_Month} ${greatest_decrease}\n"
 
-print("Financial Analysis")
-print("---------------------------")
-print(f"Total Months: {total_rows}")
-print(f"Total:${total}")
-print(f"Average Change: ${average}")
-print(f"Greatest Increase in Profits: {Positive_Month} ${greatest_increase}")
-print(f"Greatest Decrease in Profits: {Negative_Month} ${greatest_decrease}")
+print(output)
+
+#Write to the text path
+with open(textpath, "w") as txt_file:
+    txt_file.write(output)
