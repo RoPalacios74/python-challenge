@@ -38,14 +38,15 @@ with open(budgetpath, newline='') as csvfile:
                 all_changes = average_change+int(row[1])
                 average = all_changes / total_rows
 
-# #Print to terminal
-# print("Financial Analysis")
-# print("---------------------------")
-# print(f"Total Months: {total_rows}")
-# print(f"Total:${total}")
-# print(f"Average Change: ${average}")
-# print(f"Greatest Increase in Profits: {Positive_Month} ${greatest_increase}")
-# print(f"Greatest Decrease in Profits: {Negative_Month} ${greatest_decrease}")
+                
+#Print to terminal
+print("Financial Analysis")
+print("---------------------------")
+print(f"Total Months: {total_rows}")
+print(f"Total:${total}")
+print(f"Average Change: ${average}")
+print(f"Greatest Increase in Profits: {Positive_Month} ${greatest_increase}")
+print(f"Greatest Decrease in Profits: {Negative_Month} ${greatest_decrease}")
 
 
 
