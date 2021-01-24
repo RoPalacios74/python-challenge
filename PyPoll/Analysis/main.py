@@ -5,8 +5,12 @@ import csv
 electionpath = os.path.join('Resources','election_data.csv')
 textpath= os.path.join("Resources", "Analysis")
 
+
+candidates=[]
+votes=[]
+percentage=[]
+candidate_votes=[]
 total_votes=0
-candidates=0
 
 with open(electionpath, newline='') as csvfile:  
         csvreader = csv.reader(csvfile, delimiter=',')
@@ -15,28 +19,42 @@ with open(electionpath, newline='') as csvfile:
 
         for row in csvreader:
             total_votes += 1
-            
 
-# print("candidate")
+            if row[2] not in candidates:
+                candidates.append(row[2])
+            votes.append(row[2])
+
+        for candidate in candidates:
+            candidate_votes.append(votes.count(candidate))
+            percentage.append(round(votes.count(candidate)/total_votes*100,3))
+
+        winner=candidates[candidate_votes.index(max(candidate_votes))]
+          
+#print on terminal
+# print("{candidates}")
 
 # print("Election Results")
 # print("------------------------------")
 # print(f"Total Votes: {total_votes}")
 # print("------------------------------") 
+# for i in range(len(candidates)):
+#     print(f'{candidates[i]}: {percentage[i]}% {candidate_votes[i]}')
 # print("------------------------------") 
 # print("------------------------------") 
 
+#print to text file
+#could not figure out how to print "for i" to text file so I inpunt them individually
 output=(
 "Election Results\n"
 "---------------------------\n"
 f"Total Votes: {total_votes}\n"
 "---------------------------\n"
-
-
-
-
+f"{candidates[0]} " f"{percentage[0]}% " f"{candidate_votes[0]}\n"
+f"{candidates[1]} " f"{percentage[1]}% " f"{candidate_votes[1]}\n"
+f"{candidates[2]} " f"{percentage[2]}% " f"{candidate_votes[2]}\n"
+f"{candidates[3]} " f"{percentage[3]}% " f"{candidate_votes[3]}\n"
 "---------------------------\n"
-f"Winner:\n"
+f"Winner: {winner}\n"
 "---------------------------\n"
 )
 print(output)
@@ -47,24 +65,3 @@ with open(textpath, "w") as txt_file:
 
 
 
-# A complete list of candidates who received votes
-
-# The percentage of votes each candidate won
-
-# The total number of votes each candidate won
-
-# The winner of the election based on popular vote.
-
-# As an example, your analysis should look similar to the one below:
-
-# Election Results
-# -------------------------
-# Total Votes: 3521001
-# -------------------------
-# Khan: 63.000% (2218231)
-# Correy: 20.000% (704200)
-# Li: 14.000% (492940)
-# O'Tooley: 3.000% (105630)
-# -------------------------
-# Winner: Khan
-# -------------------------
